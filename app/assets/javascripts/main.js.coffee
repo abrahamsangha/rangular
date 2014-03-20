@@ -6,5 +6,9 @@
 #= require_tree ./controllers/main
 
 #create Angular module
+Blog = angular.module('Blog', ['ngRoute'])
 
-Blog = angular.module('Blog', [])
+Blog.config(['$routeProvider', ($routeProvider) ->
+  $routeProvider.when('/post/:postId', { templateUrl: '../assets/mainPost.html', controller: 'PostCtrl' })
+  $routeProvider.otherwise({ templateUrl: '../assets/mainIndex.html', controller: 'IndexCtrl' })
+  ])
